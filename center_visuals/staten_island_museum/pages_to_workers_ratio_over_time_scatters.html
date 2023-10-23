@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.14.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-1be4514aa7b5daa46e04307b5df1d6bd"}, "mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"field": "month_year", "type": "nominal"}, {"field": "pages_to_workers", "type": "quantitative"}, {"field": "pages_scanned", "type": "quantitative"}, {"field": "operator", "type": "quantitative"}], "x": {"field": "month_year", "type": "nominal"}, "y": {"field": "pages_to_workers", "type": "quantitative"}}, "params": [{"name": "param_260", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-1be4514aa7b5daa46e04307b5df1d6bd": [{"name": "Staten Island Museum", "month_year": "2021-10", "books_scanned": 9, "operator": 5, "pages_scanned": 1127.0, "scans_to_workers": 1.8, "pages_to_workers": 225.4}, {"name": "Staten Island Museum", "month_year": "2021-11", "books_scanned": 1, "operator": 1, "pages_scanned": 30.0, "scans_to_workers": 1.0, "pages_to_workers": 30.0}, {"name": "Staten Island Museum", "month_year": "2021-12", "books_scanned": 4, "operator": 3, "pages_scanned": 1262.0, "scans_to_workers": 1.3333333333333333, "pages_to_workers": 420.6666666666667}, {"name": "Staten Island Museum", "month_year": "2022-01", "books_scanned": 23, "operator": 3, "pages_scanned": 3154.0, "scans_to_workers": 7.666666666666667, "pages_to_workers": 1051.3333333333333}, {"name": "Staten Island Museum", "month_year": "2022-02", "books_scanned": 1, "operator": 1, "pages_scanned": 85.0, "scans_to_workers": 1.0, "pages_to_workers": 85.0}, {"name": "Staten Island Museum", "month_year": "2022-03", "books_scanned": 2, "operator": 1, "pages_scanned": 26.0, "scans_to_workers": 2.0, "pages_to_workers": 26.0}, {"name": "Staten Island Museum", "month_year": "2022-04", "books_scanned": 5, "operator": 1, "pages_scanned": 1352.0, "scans_to_workers": 5.0, "pages_to_workers": 1352.0}, {"name": "Staten Island Museum", "month_year": "2022-05", "books_scanned": 5, "operator": 2, "pages_scanned": 1329.0, "scans_to_workers": 2.5, "pages_to_workers": 664.5}, {"name": "Staten Island Museum", "month_year": "2022-06", "books_scanned": 5, "operator": 3, "pages_scanned": 1552.0, "scans_to_workers": 1.6666666666666667, "pages_to_workers": 517.3333333333334}, {"name": "Staten Island Museum", "month_year": "2022-07", "books_scanned": 4, "operator": 3, "pages_scanned": 3000.0, "scans_to_workers": 1.3333333333333333, "pages_to_workers": 1000.0}, {"name": "Staten Island Museum", "month_year": "2022-08", "books_scanned": 3, "operator": 2, "pages_scanned": 688.0, "scans_to_workers": 1.5, "pages_to_workers": 344.0}, {"name": "Staten Island Museum", "month_year": "2022-09", "books_scanned": 6, "operator": 3, "pages_scanned": 2044.0, "scans_to_workers": 2.0, "pages_to_workers": 681.3333333333334}, {"name": "Staten Island Museum", "month_year": "2022-10", "books_scanned": 3, "operator": 2, "pages_scanned": 802.0, "scans_to_workers": 1.5, "pages_to_workers": 401.0}, {"name": "Staten Island Museum", "month_year": "2023-01", "books_scanned": 58, "operator": 3, "pages_scanned": 2758.0, "scans_to_workers": 19.333333333333332, "pages_to_workers": 919.3333333333334}, {"name": "Staten Island Museum", "month_year": "2023-02", "books_scanned": 16, "operator": 2, "pages_scanned": 1496.0, "scans_to_workers": 8.0, "pages_to_workers": 748.0}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

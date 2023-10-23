@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.14.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-dc68db8722ddc655fb30322132b7ba38"}, "mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"field": "month_year", "type": "nominal"}, {"field": "pages_to_workers", "type": "quantitative"}, {"field": "pages_scanned", "type": "quantitative"}, {"field": "operator", "type": "quantitative"}], "x": {"field": "month_year", "type": "nominal"}, "y": {"field": "pages_to_workers", "type": "quantitative"}}, "params": [{"name": "param_275", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-dc68db8722ddc655fb30322132b7ba38": [{"name": "University of Warwick", "month_year": "2016-05", "books_scanned": 6, "operator": 4, "pages_scanned": 1016.0, "scans_to_workers": 1.5, "pages_to_workers": 254.0}, {"name": "University of Warwick", "month_year": "2016-06", "books_scanned": 2, "operator": 1, "pages_scanned": 138.0, "scans_to_workers": 2.0, "pages_to_workers": 138.0}, {"name": "University of Warwick", "month_year": "2016-08", "books_scanned": 1, "operator": 1, "pages_scanned": 204.0, "scans_to_workers": 1.0, "pages_to_workers": 204.0}, {"name": "University of Warwick", "month_year": "2017-02", "books_scanned": 1, "operator": 1, "pages_scanned": 374.0, "scans_to_workers": 1.0, "pages_to_workers": 374.0}, {"name": "University of Warwick", "month_year": "2017-03", "books_scanned": 4, "operator": 4, "pages_scanned": 1542.0, "scans_to_workers": 1.0, "pages_to_workers": 385.5}, {"name": "University of Warwick", "month_year": "2017-04", "books_scanned": 2, "operator": 2, "pages_scanned": 1010.0, "scans_to_workers": 1.0, "pages_to_workers": 505.0}, {"name": "University of Warwick", "month_year": "2017-07", "books_scanned": 2, "operator": 2, "pages_scanned": 752.0, "scans_to_workers": 1.0, "pages_to_workers": 376.0}, {"name": "University of Warwick", "month_year": "2017-10", "books_scanned": 4, "operator": 3, "pages_scanned": 372.0, "scans_to_workers": 1.3333333333333333, "pages_to_workers": 124.0}, {"name": "University of Warwick", "month_year": "2017-11", "books_scanned": 4, "operator": 4, "pages_scanned": 1604.0, "scans_to_workers": 1.0, "pages_to_workers": 401.0}, {"name": "University of Warwick", "month_year": "2017-12", "books_scanned": 3, "operator": 3, "pages_scanned": 1110.0, "scans_to_workers": 1.0, "pages_to_workers": 370.0}, {"name": "University of Warwick", "month_year": "2018-01", "books_scanned": 2, "operator": 1, "pages_scanned": 98.0, "scans_to_workers": 2.0, "pages_to_workers": 98.0}, {"name": "University of Warwick", "month_year": "2018-02", "books_scanned": 1, "operator": 1, "pages_scanned": 294.0, "scans_to_workers": 1.0, "pages_to_workers": 294.0}, {"name": "University of Warwick", "month_year": "2018-03", "books_scanned": 38, "operator": 10, "pages_scanned": 3588.0, "scans_to_workers": 3.8, "pages_to_workers": 358.8}, {"name": "University of Warwick", "month_year": "2018-04", "books_scanned": 49, "operator": 11, "pages_scanned": 2366.0, "scans_to_workers": 4.454545454545454, "pages_to_workers": 215.0909090909091}, {"name": "University of Warwick", "month_year": "2018-05", "books_scanned": 28, "operator": 8, "pages_scanned": 1562.0, "scans_to_workers": 3.5, "pages_to_workers": 195.25}, {"name": "University of Warwick", "month_year": "2018-06", "books_scanned": 48, "operator": 8, "pages_scanned": 2004.0, "scans_to_workers": 6.0, "pages_to_workers": 250.5}, {"name": "University of Warwick", "month_year": "2018-07", "books_scanned": 47, "operator": 10, "pages_scanned": 2195.0, "scans_to_workers": 4.7, "pages_to_workers": 219.5}, {"name": "University of Warwick", "month_year": "2018-08", "books_scanned": 55, "operator": 7, "pages_scanned": 2481.0, "scans_to_workers": 7.857142857142857, "pages_to_workers": 354.42857142857144}, {"name": "University of Warwick", "month_year": "2018-09", "books_scanned": 31, "operator": 5, "pages_scanned": 1412.0, "scans_to_workers": 6.2, "pages_to_workers": 282.4}, {"name": "University of Warwick", "month_year": "2018-10", "books_scanned": 69, "operator": 10, "pages_scanned": 3413.0, "scans_to_workers": 6.9, "pages_to_workers": 341.3}, {"name": "University of Warwick", "month_year": "2018-11", "books_scanned": 105, "operator": 11, "pages_scanned": 4561.0, "scans_to_workers": 9.545454545454543, "pages_to_workers": 414.6363636363636}, {"name": "University of Warwick", "month_year": "2018-12", "books_scanned": 48, "operator": 6, "pages_scanned": 2414.0, "scans_to_workers": 8.0, "pages_to_workers": 402.3333333333333}, {"name": "University of Warwick", "month_year": "2019-01", "books_scanned": 28, "operator": 3, "pages_scanned": 1728.0, "scans_to_workers": 9.333333333333334, "pages_to_workers": 576.0}, {"name": "University of Warwick", "month_year": "2019-02", "books_scanned": 2, "operator": 2, "pages_scanned": 626.0, "scans_to_workers": 1.0, "pages_to_workers": 313.0}, {"name": "University of Warwick", "month_year": "2019-03", "books_scanned": 3, "operator": 1, "pages_scanned": 144.0, "scans_to_workers": 3.0, "pages_to_workers": 144.0}, {"name": "University of Warwick", "month_year": "2019-04", "books_scanned": 60, "operator": 4, "pages_scanned": 637.0, "scans_to_workers": 15.0, "pages_to_workers": 159.25}, {"name": "University of Warwick", "month_year": "2019-05", "books_scanned": 10, "operator": 1, "pages_scanned": 100.0, "scans_to_workers": 10.0, "pages_to_workers": 100.0}, {"name": "University of Warwick", "month_year": "2023-05", "books_scanned": 61, "operator": 4, "pages_scanned": 610.0, "scans_to_workers": 15.25, "pages_to_workers": 152.5}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

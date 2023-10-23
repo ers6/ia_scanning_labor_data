@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.14.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}}, "data": {"name": "data-e74520d6e90cb2f2280b02b3953da433"}, "mark": {"type": "circle", "size": 60}, "encoding": {"tooltip": [{"field": "month_year", "type": "nominal"}, {"field": "pages_to_workers", "type": "quantitative"}, {"field": "pages_scanned", "type": "quantitative"}, {"field": "operator", "type": "quantitative"}], "x": {"field": "month_year", "type": "nominal"}, "y": {"field": "pages_to_workers", "type": "quantitative"}}, "params": [{"name": "param_235", "select": {"type": "interval", "encodings": ["x", "y"]}, "bind": "scales"}], "$schema": "https://vega.github.io/schema/vega-lite/v5.14.1.json", "datasets": {"data-e74520d6e90cb2f2280b02b3953da433": [{"name": "Hamilton Public Library", "month_year": "2023-04", "books_scanned": 11, "operator": 3, "pages_scanned": 4464.0, "scans_to_workers": 3.6666666666666665, "pages_to_workers": 1488.0}, {"name": "Hamilton Public Library", "month_year": "2023-05", "books_scanned": 145, "operator": 22, "pages_scanned": 28618.0, "scans_to_workers": 6.590909090909091, "pages_to_workers": 1300.8181818181818}, {"name": "Hamilton Public Library", "month_year": "2023-06", "books_scanned": 44, "operator": 7, "pages_scanned": 8566.0, "scans_to_workers": 6.285714285714286, "pages_to_workers": 1223.7142857142858}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
