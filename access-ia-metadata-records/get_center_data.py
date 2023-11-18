@@ -8,6 +8,7 @@ import pandas as pd
 import os
 # gets scanning center metadata for each scanning center and saves to a local directory. Queries based just on id and a metadata field to optimize the request process. use join_tables.py to join the data tables for each scanning center together on shared id. 
 
+# don't run this- it will not work on your machine. This is just how I generated a list of all of the ids for the scanning centers I was interested in. I found these ids iteratively through running get_collections_data(). 
 def gets_ids():
     ids_df = pd.read_csv("/Users/elizabethschwartz/Documents/access-ia-metadata-records/data/scan-center-ids-left.csv")['scan_center_ids']
     ids = []
@@ -36,12 +37,13 @@ def gets_scancenter_data():
             r = requests.get(
             "https://archive.org/advancedsearch.php?q=scanningcenter%3A" + str(this_id) +
             "&fl%5B%5D=identifier&fl%5B%5D=" + metadata_field + "&rows=6000000&output=csv&callback=callback&save=no")
-            # path
+            # change the path on your machine if you want this to work!
             file_path = "/Volumes/Samsung_T5/scanning_labor_in_IA/scancenter-data/"+str(this_id) +"-data/" + str(this_id) +"-" +metadata_field+ ".csv"
             open(file_path, "wb").write(r.content)
 
 def gets_collection_data():
     # not all the collections but pretty large ones that don't seem to bew accounted for in other collections
+    
     collection_ids = ['americana', 'printdisabled', 'internetarchivebooks', 'inlibrary', 'booksbylanguage_arabic', 'booksbylanguage', 'JaiGyan', 'digitallibraryindia', 'toronto', 'folkscanomy', 'biodiversity', 'europeanlibraries', 'china','newspapers']
     metadata_fields = ['scanningcenter']
     # for this_id in tqdm.tqdm(center_ids):
@@ -50,10 +52,9 @@ def gets_collection_data():
             r = requests.get(
             "https://archive.org/advancedsearch.php?q=collection%3A" + str(this_id) +
             "&fl%5B%5D=identifier&fl%5B%5D=" + metadata_field + "&rows=6000000&output=csv&callback=callback&save=no")
-            # path
+            # path- change if you want to work on your machine
             file_path = "/Volumes/Samsung_T5/scanning_labor_in_IA/collection-data/"+str(this_id)+ '-' +metadata_field+ ".csv"
-            open(file_path, "wb").write(r.content)
-
+            open(file_path, "wb").write(r.content
 
 
 def makes_results_csv(results, outfile_name):
