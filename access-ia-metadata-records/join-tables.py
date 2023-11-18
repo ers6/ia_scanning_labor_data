@@ -2,6 +2,7 @@ import pandas as pd
 import os
 import tqdm
 
+# this script joins the metadata tables for each scanning center together based on shared id.
 def main():
     joins_center_tables()
     combine_datasets()
