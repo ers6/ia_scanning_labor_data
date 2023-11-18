@@ -6,6 +6,7 @@ import tqdm
 import requests
 import pandas as pd
 import os
+# gets scanning center metadata for each scanning center and saves to a local directory. Queries based just on id and a metadata field to optimize the request process. use join_tables.py to join the data tables for each scanning center together on shared id. 
 
 def gets_ids():
     ids_df = pd.read_csv("/Users/elizabethschwartz/Documents/access-ia-metadata-records/data/scan-center-ids-left.csv")['scan_center_ids']
