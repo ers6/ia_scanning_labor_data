@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #vis.vega-embed {
+      width: 100%;
+      display: flex;
+    }
+
+    #vis.vega-embed details,
+    #vis.vega-embed details summary {
+      position: relative;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-lite@5.8.0"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 300, "continuousHeight": 300}, "legend": {"orient": "bottom"}}, "data": {"url": "https://raw.githubusercontent.com/ers6/ia_scanning_labor_data/main/csv_files/scans_per_center_per_month.csv"}, "mark": {"type": "bar"}, "encoding": {"color": {"condition": {"test": {"field": "name", "oneOf": ["Innodata Knowledge Services, Inc.", "Datum Data Co. Ltd.", "Hong Kong"]}, "value": "red"}, "value": "black"}, "order": {"field": "name", "type": "nominal"}, "x": {"axis": {"labelAngle": -4}, "field": "month_year", "title": "Months", "type": "temporal"}, "y": {"field": "books_scanned", "title": "Books Scanned", "type": "quantitative"}}, "height": 400, "title": "Books Scanned at Outsourced Centers vs. All Books in the Dataset", "width": 600, "$schema": "https://vega.github.io/schema/vega-lite/v5.8.0.json"};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>
