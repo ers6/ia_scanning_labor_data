@@ -2,6 +2,8 @@ import os
 import pandas as pd
 import tqdm
 
+# this script finds new scan center ids based on analysis of collection level data. 
+
 def get_center_ids():
     return  ['shenzhen', 'hongkong', 'china', 'cebu', 'alberta', 'sfdowntown',
  'tt_sanfrancisco', 'iala', 'indiana', 'euston', 'uoft', 'la', 'nj',
