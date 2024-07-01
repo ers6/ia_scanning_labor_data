@@ -4,7 +4,7 @@ This folder contains the scripts I used to create the [9 million record dataset]
 Each item (be it a book, website, or audio file) uploaded to Internet Archive(IA) contains a metadata record accessible via the Internet Archive API. Metadata fields for an IA are extensive, and there are very few required fields for an upload to work. See the [IA developer documentation](https://archive.org/developers/metadata-schema/i). for more information on fields.  One such field, the “scanningcenter” field indicates at which scanning center an object was scanned for upload into Internet Archive. This field can therefore be used to trace a history of the archive's creation and provide insight into conditions of the human workers who created it. We wrote the scripts contained in this folder to 1) amass as complete a list as possible of all unique "scanningcenter" entries across all IA records, and 2) collect relevant metadata fields for all text records scanned at the scanning centers. 
 
 ## Scanning Center Identification
-IA does not make public a complete list of all scanning centers, so we had to identify them through sifting through item metadata records. To do so, we queried large collections in Internet Archive and returning only the “scanningcenter” field. I queried the 14 largest texts collections as of June 2023: 
+IA does not make public a complete list of all scanning centers, so we had to identify them through sifting through item metadata records. To do so, we queried large collections in Internet Archive and returning only the “scanningcenter” field. We wrote a python script to queried the 14 largest texts collections as of June 2023: 
 - 'internetarchivebooks'
 - 'inlibrary'
 - 'booksbylanguage_arabic'
@@ -17,6 +17,8 @@ IA does not make public a complete list of all scanning centers, so we had to id
 - 'europeanlibraries'
 - 'china'
 - 'newspapers'
+You can locate the script in the gets_collection_data function in [get_center_data.py](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). 
+
 following collections using the gets_collection_data function in this python file:  'americana', 'printdisabled', 
 Please note that these are not all the collections in Internet Archive. Rather, they are the largest text collections with the fewest overlapping titles as one text can be a member of multiple collections. View the results of these queries here. Using this method, we generated a list of 102 unique entries in the 'scanningcenter' field.
 ## Metadata Set Collection
