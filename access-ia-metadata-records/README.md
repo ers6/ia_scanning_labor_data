@@ -17,10 +17,9 @@ IA does not make public a complete list of all scanning centers, so we had to id
 - 'europeanlibraries'
 - 'china'
 - 'newspapers'
-You can locate the script in the gets_collection_data function in [get_center_data.py](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). 
 
-following collections using the gets_collection_data function in this python file:  'americana', 'printdisabled', 
-Please note that these are not all the collections in Internet Archive. Rather, they are the largest text collections with the fewest overlapping titles as one text can be a member of multiple collections. View the results of these queries here. Using this method, we generated a list of 102 unique entries in the 'scanningcenter' field.
+You can locate the script in the gets_collection_data function in [get_center_data.py](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). Please note that these are not all the collections in Internet Archive. Rather, they are the largest text collections with the fewest overlapping titles as one text can be a member of multiple collections. View the results of these queries here. Using this method, we generated a list of 102 unique entries in the 'scanningcenter' field.
+
 ## Metadata Set Collection
 On 2023-06-06, we queried the IA API for a list of items that contained one of the 102 values in the “scanningcenter” field and asked it to return the following metadata fields for all matching items: [ id, sponsor, scandate, donor, scanner, shipping_container, operator, imagecount, scanningcenter] using this python script. 
 We merged the datasets for each 102 scanning centers into one large texts dataset using the script linked here. 
