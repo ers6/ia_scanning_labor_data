@@ -38,5 +38,5 @@ Finally, we geocoded and merged the dataset.
 
 See the [locations key](https://github.com/ers6/ia_scanning_labor_data/blob/96391c4acd75f4123cce3abb2aba074cb65de79a/location_key.csv) and [geocoding script](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). Access the geocoded texts dataset as a [csv file here](https://wustl.box.com/s/etz5tswr99ie7rf5fqlu2lg8gvg3mryb). 
 
-Missing data
-We only have 9 million records; there are 37 million in IA. Part of me wonders if this is because the rest don’t  have a scanningcenter metadata field. The ‘scanningcenter’ field is not required for upload. When I’ve uploaded items to the IA from my machine (not as a worker in a scanning center), I didn’t supply a ‘scanningcenter’ field. Here’s an example of an IA record that I uploaded using the IA Python library. 
+# What's Missing
+We only have 9 million text records; there were 37 million text records in IA at the time of data collection. Part of me wonders if this is because the rest don’t  have a scanningcenter metadata field. The ‘scanningcenter’ field is not required for upload. When I’ve uploaded items to the IA from my machine (not as a worker in a scanning center), I didn’t supply a ‘scanningcenter’ field. Here’s an example of an IA record that I uploaded using the IA Python library. 
