@@ -32,14 +32,11 @@ Internet Archive's blog posts include an article on the establishment of a scann
 #### Institutional Collection Example
 All books with the scanning center values 'il' and 'ill' are part of the University of Illinois at Urbana-Champaign's collection. Therefore, we assumed both represent the same scanning center and assigned latitude and longitude coordinates based on that institution’s location. 
 
-#### Bills of Ladinf Example 
+#### Bills of Lading & 990s Example 
 IA has a contract with a company called Innodata that has a location in Cebu, Philippines. So, we geocode the ‘cebu’ center to Innodata Knowledge Service’s Mandaue City location.
-Finally, we geocoded and merged the dataset. See the locations key and geocoding script. Access the geocoded texts dataset as a csv file here. 
+Finally, we geocoded and merged the dataset. 
 
-[INSERT MORE ON GEOCODING METHODOLOGY]  
-The 110 entries in the scanningcenter field to 102 actual scanning center locations (as some of them are duplicates - i.e., il and uiuc both refer to the University of Illinois’ scanning center).
-procedure: 
-see if all books scanned at a center are part of a single institution’s collection - i.e., all books scanned at ‘tt_stlouis’ are part of Washington University in St. Louis’s IA collection (this is usually the case) - then assign lat/lon coordinates based on that institution’s location
-reference IA’s 990 tax return records + bills of lading for a matching name or location. For example, IA has a contract with a company called Innodata that has a location in Cebu, Philippines. So, we geocode the ‘cebu’ center to Innodata Knowledge Service’s Mandaue City location.
+See the [locations key](https://github.com/ers6/ia_scanning_labor_data/blob/96391c4acd75f4123cce3abb2aba074cb65de79a/location_key.csv) and [geocoding script](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). Access the geocoded texts dataset as a [csv file here](https://wustl.box.com/s/etz5tswr99ie7rf5fqlu2lg8gvg3mryb). 
+
 Missing data
 We only have 9 million records; there are 37 million in IA. Part of me wonders if this is because the rest don’t  have a scanningcenter metadata field. The ‘scanningcenter’ field is not required for upload. When I’ve uploaded items to the IA from my machine (not as a worker in a scanning center), I didn’t supply a ‘scanningcenter’ field. Here’s an example of an IA record that I uploaded using the IA Python library. 
