@@ -21,7 +21,8 @@ IA does not make public a complete list of all scanning centers, so we had to id
 You can locate the script in the gets_collection_data function in [get_center_data.py](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). Please note that these are not all the collections in Internet Archive. Rather, they are the largest text collections with the fewest overlapping titles as one text can be a member of multiple collections. View the results of [these queries here](https://wustl.app.box.com/folder/271952490091). Using this method, we generated a list of 110 unique entries in the `scanningcenter` field.
 
 ## Metadata Set Collection
-On 2023-06-06, we queried the IA API for a list of items that contained one of the 110 values in the `scanningcenter` field. For every item with one of the 110 `scanningcenter` values, we collected the following metadata fields: 
+On 2023-06-06, we queried the IA API for a list of items that contained one of the 110 values in the `scanningcenter` field. For every item with one of the 110 `scanningcenter` values, we used the `gets_center_data` [python function](https://github.com/ers6/ia_scanning_labor_data/blob/99eb04d13bea6a5a9bb153c29f777b5958c16a18/access-ia-metadata-records/get_center_data.py) to collect the following metadata fields: 
+
 - [`identifier`](https://archive.org/developers/metadata-schema/index.html#identifier) a unique identifier for the resource. A required field.
 - [`sponsor`](https://archive.org/developers/metadata-schema/index.html#sponsor) the organization that paid for the resource to be scanned. Optional. 
 - [`scandate`](https://archive.org/developers/metadata-schema/index.html#scandate) the date on which the resource was scanned for ingest into IA. Usually automatically uploaded from a scribe machine. 
@@ -31,8 +32,8 @@ On 2023-06-06, we queried the IA API for a list of items that contained one of t
 - [`operator`](https://archive.org/developers/metadata-schema/index.html#operator) the email of the person who scanned the item. This is editable only by IA software. We use this field to distinguish human workers. Not required.
 - [`imagecount`](https://archive.org/developers/metadata-schema/index.html#operator): the number of images in a book media file determined by the IA software. Not required. 
 - [`scanningcenter`](https://archive.org/developers/metadata-schema/index.html#scanningcenter): the location at which a physical item was digitized. Editable by IA software only. Not required.
-using the `gets_center_data` [python function](https://github.com/ers6/ia_scanning_labor_data/blob/99eb04d13bea6a5a9bb153c29f777b5958c16a18/access-ia-metadata-records/get_center_data.py). 
-We merged the datasets for each 102 scanning centers into one large texts dataset using the [script linked here](https://github.com/ers6/ia_scanning_labor_data/blob/5b6761ddd5385b9fde53c67d95dfa4e89cbdb47d/access-ia-metadata-records/get_center_data.py). Due to the size of the dataset and IA's API timing out, we gathered data one field at a time and then merged them into one large csv file per center. You can access the csv files for each 102 center (both combined and raw) in [this box folder](https://wustl.box.com/s/nigtbfcot4z17pk3by6h6kbijxtfgla9). 
+
+ We merged the datasets for each 102 scanning centers into one large texts dataset using the [script linked here](https://github.com/ers6/ia_scanning_labor_data/blob/5b6761ddd5385b9fde53c67d95dfa4e89cbdb47d/access-ia-metadata-records/get_center_data.py). Due to the size of the dataset and IA's API timing out, we gathered data one field at a time and then merged them into one large csv file per center. You can access the csv files for each 102 center (both combined and raw) in [this box folder](https://wustl.box.com/s/nigtbfcot4z17pk3by6h6kbijxtfgla9). 
 
 ### Geocoding Methodology
 While there are 110 unique entries in the 'scanningcenter' field as of June 2023, we identified 102 unique scanning centers using geocoding methodologies. Geocoding refers to the practice of assigning geographic data to a place name. We geocoded scanningcenters manually by combing through Internet Archive’s blog, identifying if all books scanned at a center were also in an institution's collection, and referncing IA's 990 tax returns and bills of lading. 
@@ -46,6 +47,7 @@ All books with the scanning center values 'il' and 'ill' are part of the Univers
 IA has a contract with a company called Innodata that has a location in Cebu, Philippines. So, we geocode the ‘cebu’ center to Innodata Knowledge Service’s Mandaue City location.
 Finally, we geocoded and merged the dataset. 
 
+##### this isn't the geocoding script - dig that up and ensure the texts file is actually geocoded
 See the [locations key](https://github.com/ers6/ia_scanning_labor_data/blob/96391c4acd75f4123cce3abb2aba074cb65de79a/location_key.csv) and [geocoding script](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). Access the geocoded texts dataset as a [csv file here](https://wustl.box.com/s/etz5tswr99ie7rf5fqlu2lg8gvg3mryb). 
 
 # What's Missing
