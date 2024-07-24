@@ -5,12 +5,3 @@ This GitHub repository contains the scripts used to collect and analyze the data
 - **center_visuals**: contians a notebook for building visualizations of the data for each center and all the centers as a whole. Each center has its own subdirectory containing visualizations of its particular scanning output. 
 - **metadata-analysis**:  contains the jupyter notebook in which we calculated measures to approximate the varying degrees of overwork at each scanning center. The subdirectory, **metadata-records-analysis-csvs** contains csv files with the results. 
 
-
-
-
-access-ia-metadata-records: contains the scripts and procedures for actually accessing the metadata records from the IA api as well as joining the disparate tables together into the full texts dataset. 
-geocodes_text_dataset.py : geocodes the texts dataset
-calculate_stats.ipynb : uses the geocodes texts dataset to create the csv files in the csv_file directory (should rename that to something clearer)
-
-to do: rename the csv directory because it's confusing 
-create a separate directory (probably the renamed csv one) to put scripts about analyzing the scans in. 
