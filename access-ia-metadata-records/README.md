@@ -47,8 +47,7 @@ All books with the scanning center values 'il' and 'ill' are part of the Univers
 IA has a contract with a company called Innodata that has a location in Cebu, Philippines. So, we geocode the ‘cebu’ center to Innodata Knowledge Service’s Mandaue City location.
 Finally, we geocoded and merged the dataset. 
 
-##### this isn't the geocoding script - dig that up and ensure the texts file is actually geocoded
-See the [locations key](https://github.com/ers6/ia_scanning_labor_data/blob/96391c4acd75f4123cce3abb2aba074cb65de79a/location_key.csv) and [geocoding script](https://github.com/ers6/ia_scanning_labor_data/blob/516fe1ad2d14e1fa8e71ba74e31ebf9c349f2329/access-ia-metadata-records/get_center_data.py). Access the geocoded texts dataset as a [csv file here](https://wustl.box.com/s/etz5tswr99ie7rf5fqlu2lg8gvg3mryb). 
+See the identified locations of the scanning centers in the [locations key](https://github.com/ers6/ia_scanning_labor_data/blob/96391c4acd75f4123cce3abb2aba074cb65de79a/location_key.csv). We added geographic information to and consolidated scanning centers with more than one metadata entry in the `scanningcenter` using [geocoding script](https://github.com/ers6/ia_scanning_labor_data/blob/main/access-ia-metadata-records/geocodes_text_dataset.py). The geocoded texts dataset is too large to upload to github. For access, view the [csv file here](https://wustl.box.com/s/etz5tswr99ie7rf5fqlu2lg8gvg3mryb). 
 
 # What's Missing
 We only have 9 million text records; there were 37 million text records in IA at the time of data collection. Part of me wonders if this is because the rest don’t  have a scanningcenter metadata field. The ‘scanningcenter’ field is not required for upload. When I’ve uploaded items to the IA from my machine (not as a worker in a scanning center), I didn’t supply a ‘scanningcenter’ field. Here’s an example of an IA record that I uploaded using the IA Python library. 
