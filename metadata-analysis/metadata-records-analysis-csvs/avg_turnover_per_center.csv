@@ -1,70 +1,70 @@
-name,days_worked
-Allen County Public Library Geneaology Center,588.2948717948718
-American Museum of Natural History,433.0
-American Numismatic Society,1169.3333333333333
-American Printing House for the Blind,1114.5
-Analysis and Policy Observatory (APO),208.0
-"BYU, Hawaii",250.14285714285714
-"BYU, Idaho Family History Library",291.6
-"BYU, Provo",2027.864406779661
-Boston Public Library,573.8344827586207
-British Library,682.4583333333334
-Brown University,1478.857142857143
-California Acaddemy of Sciences,378.0
-California State Library,349.5
-"Centre for Strategic and International Studies, Jakarta",419.0
-Church History Library,167.32142857142858
-Clatsop County Historical Society,444.4
-Clemson University,336.1666666666667
-Columbia University,418.70512820512823
-Datum Data Co. Ltd.,271.90506329113924
-Duke University,647.8888888888889
-Family Search Library,578.0
-Georgetown University,281.1764705882353
-Getty Research Institute,295.0
-Getty Research Institute Valencia Warehouse,534.7333333333333
-Hamilton Public Library,44.0
-Harvard,672.0
-Hong Kong,100.13518518518518
-Hopewell Junction,394.0
-"Innodata Knowledge Services, Inc.",708.620320855615
-Internet Archive Headquarters,151.10526315789474
-Internet Archive Sheridan Headquarters,109.51515151515152
-Internt Archive Physical Archive,138.01666666666668
-John Hopkins University Library Offsite Storage,605.3333333333334
-Library of Congress,432.6143790849673
-National Agricultural Library,830.95
-National Library of Scotland,388.0
-"Natural History Museum Library, London",616.4
-New York Botanical Garden,1193.0
-North Carolina State University,179.42857142857142
-Oberlin College Libraries,1083.0
-Peabody Essex Museum,293.0
-Perkins School for the Blind,572.0
-Princeton University,555.3414634146342
-Research Institute of Korean Studies,35.0
-San Francisco Public Library,249.5
-Servants of knowledge,82.5
-Smithsonian Libraries and Archives,378.72
-Stanford University,165.28571428571428
-State Library of Pennsylvania,703.2222222222222
-Staten Island Museum,299.3333333333333
-The Archive of Contemporary Music,110.2089552238806
-The Ohio State University,859.5
-The Servants of Knowledge,364.6666666666667
-Trent University,
-UCLA,392.2
-UIUC,454.22222222222223
-UNC Chapel Hill,509.92
-Universidad Francisco Marroquín,582.7333333333333
-University of Alberta,504.55172413793105
-University of Chinese Academy of Sciences,399.75
-University of Florida,342.25
-"University of Maryland, College Park",215.0
-University of Pretoria,517.1
-University of Toronto,553.5231316725979
-University of Victoria,461.8333333333333
-University of Warwick,268.0
-Washington University in St. Louis,867.0
-Yiddish Book Center,286.125
-Zhejiang University,0.0
+,name,avg_turnover,standard_deviation
+0,Allen County Public Library Geneaology Center,588.2948717948718,925.1336030311529
+1,American Museum of Natural History,433.0,
+2,American Numismatic Society,1169.3333333333333,777.9597247501526
+3,American Printing House for the Blind,1114.5,555.0788232314399
+4,Analysis and Policy Observatory (APO),208.0,
+5,"BYU, Hawaii",250.14285714285714,230.6891332301463
+6,"BYU, Idaho Family History Library",291.6,536.2010816848469
+7,"BYU, Provo",2027.864406779661,1957.236593962458
+8,Boston Public Library,573.8344827586207,639.8251064613183
+9,British Library,682.4583333333334,853.9968099579997
+10,Brown University,1478.857142857143,1319.334355975445
+11,California Acaddemy of Sciences,378.0,
+12,California State Library,349.5,556.9395538715729
+13,"Centre for Strategic and International Studies, Jakarta",419.0,
+14,Church History Library,167.32142857142858,211.4495042726345
+15,Clatsop County Historical Society,444.4,553.1937273686317
+16,Clemson University,336.1666666666667,359.60056544264035
+17,Columbia University,418.70512820512823,724.5725315521238
+18,Datum Data Co. Ltd.,271.90506329113924,433.857145586825
+19,Duke University,647.8888888888889,1320.185066992924
+20,Family Search Library,578.0,905.6049911523236
+21,Georgetown University,281.1764705882353,473.86762857549644
+22,Getty Research Institute,295.0,120.20815280171308
+23,Getty Research Institute Valencia Warehouse,534.7333333333333,486.4976092536569
+24,Hamilton Public Library,44.0,
+25,Harvard,672.0,722.7535310648207
+26,Hong Kong,100.13518518518518,180.6142946586192
+27,Hopewell Junction,394.0,
+28,"Innodata Knowledge Services, Inc.",708.620320855615,528.7032243377166
+29,Internet Archive Headquarters,151.10526315789474,176.69457740465754
+30,Internet Archive Sheridan Headquarters,109.51515151515152,352.81263806127686
+31,Internt Archive Physical Archive,138.01666666666668,228.80100371862423
+32,John Hopkins University Library Offsite Storage,605.3333333333334,515.2905329358704
+33,Library of Congress,432.6143790849673,846.5949065784137
+34,National Agricultural Library,830.95,1164.2291542837306
+35,National Library of Scotland,388.0,287.7624019916431
+36,"Natural History Museum Library, London",616.4,583.176621126543
+37,New York Botanical Garden,1193.0,
+38,North Carolina State University,179.42857142857142,137.37765119414092
+39,Oberlin College Libraries,1083.0,609.0820962727438
+40,Peabody Essex Museum,293.0,
+41,Perkins School for the Blind,572.0,
+42,Princeton University,555.3414634146342,1015.5167289165237
+43,Research Institute of Korean Studies,35.0,49.49747468305833
+44,San Francisco Public Library,249.5,413.9034754100546
+45,Servants of knowledge,82.5,103.94469683442249
+46,Smithsonian Libraries and Archives,378.72,1005.9548747334544
+47,Stanford University,165.28571428571428,367.39838245230675
+48,State Library of Pennsylvania,703.2222222222222,823.03960685039
+49,Staten Island Museum,299.3333333333333,259.86599110567226
+50,The Archive of Contemporary Music,110.2089552238806,173.73573953368415
+51,The Ohio State University,859.5,568.0554550393825
+52,The Servants of Knowledge,364.6666666666667,449.5195954201181
+53,Trent University,,
+54,UCLA,392.2,680.5519328701766
+55,UIUC,454.22222222222223,655.128513480849
+56,UNC Chapel Hill,509.92,894.9390537908153
+57,Universidad Francisco Marroquín,582.7333333333333,739.9047437914272
+58,University of Alberta,504.55172413793105,729.8313203457601
+59,University of Chinese Academy of Sciences,399.75,519.4518745754991
+60,University of Florida,342.25,391.4762561010682
+61,"University of Maryland, College Park",215.0,82.02438661763951
+62,University of Pretoria,517.1,581.7888983318796
+63,University of Toronto,553.5231316725979,1030.907079953731
+64,University of Victoria,461.8333333333333,545.7693346704876
+65,University of Warwick,268.0,493.8339801998238
+66,Washington University in St. Louis,867.0,704.960046149189
+67,Yiddish Book Center,286.125,235.8496343011793
+68,Zhejiang University,0.0,
