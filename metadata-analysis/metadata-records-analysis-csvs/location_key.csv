@@ -3,12 +3,12 @@ cebu,10.31803327,123.9205454,"Innodata Knowledge Services, Inc."
 hongkong,22.31836625,114.181248,Hong Kong
 alberta,53.52319337,-113.5271984,University of Alberta
 sfdowntown,37.78244229,-122.4717902,Internet Archive Headquarters
-shenzhen,113.9856083,"22.598147246440938,",Datum Data Co. Ltd.
+shenzhen,113.9856083,22.5981472464409,Datum Data Co. Ltd.
 sanfrancisco,37.78244229,-122.4717902,Internet Archive Headquarters
 uoft,43.66312452,-79.3955813,University of Toronto
 indiana,41.07773159,-85.14224798,Allen County Public Library Geneaology Center
 euston,51.528702,-0.12761,British Library
-la,"34.071863589276, -118.45416814232854",-118.2538418,UCLA
+la,34.071863589276,-118.2538418,UCLA
 nj,40.34604013,-74.66685643,Princeton University
 boston,42.34936189,-71.07819992,Boston Public Library
 beltsville,39.02352526,-76.9216014,National Agricultural Library
@@ -21,14 +21,14 @@ il,40.10440926,-88.22933583,UIUC
 edinburgh,55.94870434,-3.191972202,National Library of Scotland
 sfciviccenter,37.77914204,-122.4157906,San Francisco Public Library
 china,34.891329,102.4324526,Datum Data Co. Ltd.
-iala,"34.071863589276, -118.45416814232854",-118.2538418,UCLA
-santamonica,"34.071863589276, -118.45416814232854",-118.2538418,UCLA
-maryland,"38.98690162117241, -76.94130975499546",-77.173238,"University of Maryland, College Park"
+iala,34.071863589276,-118.2538418,UCLA
+santamonica,34.071863589276,-118.2538418,UCLA
+maryland,38.9869016211724,-77.173238,"University of Maryland, College Park"
 raleigh,35.78748428,-78.66939426,North Carolina State University
-provo,"40.24888001047114, -111.64850939879179",-111.66089,"BYU, Provo"
-washingtondc,"38.891327348794235, -77.02586403862762",-76.99963604,Smithsonian Libraries and Archives
+provo,40.2488800104711,-111.66089,"BYU, Provo"
+washingtondc,38.8913273487942,-76.99963604,Smithsonian Libraries and Archives
 Capitolhill,38.89126054,-77.02612153,Smithsonian Libraries and Archives
-tt_georgetown,"38.90659980589519, -77.07223903173019",-77.07212976,Georgetown University
+tt_georgetown,38.9065998058952,-77.07212976,Georgetown University
 sheridan,37.80039616,-122.4603638,Internet Archive Sheridan Headquarters
 durham,36.00354706,-78.93830223,Duke University
 providence,41.82598954,-71.40246227,Brown University
@@ -46,12 +46,12 @@ tt_numismatic,40.72401342,-74.0064435,American Numismatic Society
 tt_getty,34.07768084,-118.4752916,Getty Research Institute
 tt_providence,41.82582965,-71.40050963,Brown University
 tt_harvardernstmayr,42.37690652,-71.11665402,Harvard
-pretoria,"-25.75484280055574,",28.2314278,University of Pretoria
+pretoria,-25.7548428005557,28.2314278,University of Pretoria
 UofT,43.66312452,-79.3955813,University of Toronto
 tt_sok,13.01508353,77.58188903,The Servants of Knowledge
 RMSC-IIITH,17.45672402,78.34022488,"Regional Mega Scanning Center by IIT, Hyderbad"
 Durham,36.00354706,-78.93830223,Duke University
-tt_pts,"40.345616069264594,",-74.66150508,Princeton University
+tt_pts,40.3456160692646,-74.66150508,Princeton University
 sacramento,38.57603262,-121.4962643,California State Library
 beijing,40.40857413,116.6825007,University of Chinese Academy of Sciences
 tt_bangalore,13.01508353,77.58188903,Servants of knowledge
@@ -61,7 +61,7 @@ arch,37.80039616,-122.4603638,Internet Archive Headquarters
 guatemala,14.60594769,-90.50534962,Universidad Francisco Marroquín
 tt_swinburne,-37.82169275,145.0389975,Analysis and Policy Observatory (APO)
 BookScanUS,33.78561232,-84.41203005,BookScanUS
-tt_amnh,"40.78192527034579,",-73.97246471,American Museum of Natural History
+tt_amnh,40.7819252703458,-73.97246471,American Museum of Natural History
 harrisburg,40.2650287,-76.88065236,State Library of Pennsylvania
 CCLHYDERBAD,17.45672402,78.34022488,International Institute of Information Technology Hyderabad
 amherst,42.32188825,-72.52766762,Yiddish Book Center
@@ -96,7 +96,7 @@ saltlakecity,40.77200728,-111.8906814,Church History Library
 tt_louisville,38.25759766,-85.71422071,American Printing House for the Blind
 tt_oberlin,41.29341848,-82.22281366,Oberlin College Libraries
 tt_clatsopcounty,46.18852036,-123.8254003,Clatsop County Historical Society
-brussels,"40.24888001047114, -111.64850939879179",-111.66089,"BYU, Provo"
+brussels,40.2488800104711,-111.66089,"BYU, Provo"
 tt_harrisburg,40.2650287,-76.88065236,State Library of Pennsylvania
 tt_statenisland,40.64492345,-74.10271703,Staten Island Museum
 utah,40.77037084,-111.8945972,Family Search Library
