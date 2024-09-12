@@ -4,7 +4,7 @@ pd.options.mode.chained_assignment = None  # default='warn'
 
 def main(): 
     texts = pd.read_csv('/Volumes/Samsung_T5/scanning_labor_in_IA/texts-data.csv', low_memory=False)
-    loc_key = pd.read_csv("/Volumes/Samsung_T5/scanning_labor_in_IA/location_key.csv")
+    loc_key = pd.read_csv("https://raw.githubusercontent.com/ers6/ia_scanning_labor_data/main/metadata-analysis/metadata-records-analysis-csvs/location_key.csv")
     texts['name'] = ''
     texts['lat'] = ''
     texts['long'] = ''
