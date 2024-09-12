@@ -2,7 +2,7 @@ scan_center,lat,long,name
 1dollarscan (zLibro),37.27838889,-121.9492601,1 Dollar Scan
 indiana,41.0771285,-85.1432003,Allen County Public Library Geneaology Center
 tt_amnh,40.78130431,-73.97404878,American Museum of Natural History
-tt_numismatic,38.649678,-90.32848246,Washington University in St. Louis
+tt_numismatic,38.64984185,-90.32951435,American Numismatic Society
 tt_louisville,38.25759766,-85.71422071,American Printing House for the Blind
 tt_swinburne,-37.82242623,145.0393157,Analysis and Policy Observatory (APO)
 BookScanUS,32.23962014,-110.9556127,BookScanUS
@@ -48,12 +48,12 @@ sfdowntown,37.78244229,-122.4717902,Internet Archive Headquarters
 sanfrancisco,37.78244229,-122.4717902,Internet Archive Headquarters
 arch,37.80039616,-122.4603638,Internet Archive Headquarters
 tt_sanfrancisco,37.78244229,-122.4717902,Internet Archive Headquarters
-sheridan,39.3290796,-122.4603688,Internet Archive Sheridan Headquarters
-miss,39.32729316,-122.4603688,Internet Archive Sheridan Headquarters
-rich,37.92940204,-122.3459016,Internt Archive Physical Archive
-richmond,37.92940204,-122.3459016,Internt Archive Physical Archive
-richflorida,37.92940204,-122.3459016,Internt Archive Physical Archive
-clarksville,39.20608234,-76.94551344,John Hopkins University Library Offsite Storage
+sheridan,"39.32907959825482, -76.61937725241745",-122.4603688,Internet Archive Sheridan Headquarters
+miss,"39.327293162054076, -76.61954979132055",-122.4603688,Internet Archive Sheridan Headquarters
+rich,"37.929402035788144, -122.34590157275528",-122.3459874,Internt Archive Physical Archive
+richmond,"37.929402035788144, -122.34590157275528",-122.3459874,Internt Archive Physical Archive
+richflorida,37.92950359,-122.3459874,Internt Archive Physical Archive
+clarksville,"39.206082342965914, -76.94551344309879",-76.89757006,John Hopkins University Library Offsite Storage
 Kahle/Austin Foundation,37.79555743,-122.4493788,Kahle/Austin Foundation
 capitolhill,38.88870235,-77.00481291,Library of Congress
 mobot,38.61688951,-90.26274302,Missouri Botanical Garden
@@ -70,40 +70,41 @@ tt_perkins,42.3616051,-71.17784952,Perkins School for the Blind
 bali,-8.685606156,115.2297763,Perpustakaan Provinsi Bali
 AP Press Academy Archives,17.39517291,78.47138682,Press Academy of Andhra Pradesh
 nj,40.34956609,-74.65738623,Princeton University
-tt_pts,40.34956609,-74.65738623,Princeton University
+tt_pts,"40.34956609014289,",-74.65738623,Princeton University
 RMSC-IIITH,17.4462589,78.3484708,"Regional Mega Scanning Center by IIT, Hyderbad"
 RMSC_IIITH,17.4462589,78.3484708,"Regional Mega Scanning Center by IIT, Hyderbad"
-tt_riks,37.5928363,127.0264268,Research Institute of Korean Studies
+tt_riks,37.5928289,127.0254143,Research Institute of Korean Studies
 sfciviccenter,37.77914204,-122.4157906,San Francisco Public Library
-tt_bangalore,12.966384,77.6352956,The Servants of Knowledge
+tt_bangalore,12.966384,77.6352956,Servants of knowledge
 washingtondc,38.89132735,-77.02586404,Smithsonian Libraries and Archives
 Capitolhill,38.89126054,-77.02586404,Smithsonian Libraries and Archives
 tt_stanfordlaw,37.4239279,-122.1674727,Stanford University
 harrisburg,40.2650287,-76.88065236,State Library of Pennsylvania
 tt_harrisburg,40.2650287,-76.88065236,State Library of Pennsylvania
-tt_statenisland,40.64455096,-74.10269554,Staten Island Museum
+tt_statenisland,40.64492345,-74.10271703,Staten Island Museum
 manhattan,40.71867548,-74.00374316,The Archive of Contemporary Music
-tt_osu,39.99926893,-83.01493372,The Ohio State University
+tt_osu,39.9992057,-83.0158362,The Ohio State University
 tt_sok,12.966384,77.6352956,The Servants of Knowledge
-trent,44.35722473,-78.29034148,Trent University
-la,34.07168305,-118.442185,UCLA
-iala,34.07168305,-118.442185,UCLA
-santamonica,34.07168305,-118.442185,UCLA
+trent,44.3571217,-78.2917651,Trent University
+la,34.0714326,-118.4436644,UCLA
+iala,34.0714326,-118.4436644,UCLA
+santamonica,34.0714326,-118.4436644,UCLA
 ill,40.10440926,-88.22933583,UIUC
 il,40.10440926,-88.22933583,UIUC
-chapelhill,35.91097779,-79.0487334,UNC Chapel Hill
+chapelhill,35.9107937,-79.0487334,UNC Chapel Hill
 guatemala,14.6054948,-90.50534962,Universidad Francisco Marroquín
 alberta,53.5264397,-113.5254331,University of Alberta
 alberta,53.5264397,-113.5254331,University of Alberta
-beijing,40.40814427,116.6823424,University of Chinese Academy of Sciences
+beijing,39.9827212,116.326045,University of Chinese Academy of Sciences
 hbl_storrs,41.80696142,-72.25146626,University of Connecticut
 gainesville,29.6516662,-82.3445709,University of Florida
 maryland,38.9860937,-76.9456868,"University of Maryland, College Park"
 pretoria,-25.7553205,28.2295439,University of Pretoria
-uoft,43.66441368,-79.39947221,University of Toronto
-UofT,43.66441368,-79.39947221,University of Toronto
+uoft,43.6643506,-79.4013436,University of Toronto
+UofT,43.6643506,-79.4013436,University of Toronto
 tt_victoria,48.4633746,-123.3100252,University of Victoria
-tt_warwick,52.38161719,-1.561841996,University of Warwick
-tt_stlouis,38.649678,-90.32848246,Washington University in St. Louis
+tt_warwick,52.3814771,-1.5641673,University of Warwick
+tt_stlouis,38.6492546,-90.3105607,Washington University in St. Louis
 amherst,42.32188825,-72.52766762,Yiddish Book Center
 hangzhou,30.2628344,120.1190128,Zhejiang University
+MSN,,,
