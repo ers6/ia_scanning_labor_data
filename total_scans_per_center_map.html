@@ -1,0 +1,229 @@
+
+    <!DOCTYPE html>
+    <html>
+      <head>
+        <meta charset="UTF-8"/>
+        <title>Kepler.gl embedded map</title>
+
+        <!--Uber Font-->
+        <link rel="stylesheet" href="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/uber-fonts/4.0.0/superfine.css">
+
+        <!--MapBox css-->
+        <link href="https:https://unpkg.com/maplibre-gl@^3/dist/maplibre-gl.css" rel="stylesheet">
+
+        <!-— facebook open graph tags -->
+        <meta property="og:url" content="http://kepler.gl/" />
+        <meta property="og:title" content="Large-scale WebGL-powered Geospatial Data Visualization Tool" />
+        <meta property="og:description" content="Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets." />
+        <meta property="og:site_name" content="kepler.gl" />
+        <meta property="og:image" content="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/kepler.gl-meta-tag.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="800" />
+        <meta property="og:image:height" content="800" />
+
+        <!-— twitter card tags -->
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:site" content="@openjsf">
+        <meta name="twitter:creator" content="@openjsf">
+        <meta name="twitter:title" content="Large-scale WebGL-powered Geospatial Data Visualization Tool">
+        <meta name="twitter:description" content="Kepler.gl is a powerful web-based geospatial data analysis tool. Built on a high performance rendering engine and designed for large-scale data sets.">
+        <meta name="twitter:image" content="https://d1a3f4spazzrp4.cloudfront.net/kepler.gl/kepler.gl-meta-tag.png" />
+
+        <!-- Load React/Redux -->
+        <script src="https://unpkg.com/react@16.8.4/umd/react.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.production.min.js" crossorigin></script>
+        <script src="https://unpkg.com/redux@3.7.2/dist/redux.js" crossorigin></script>
+        <script src="https://unpkg.com/react-redux@7.1.3/dist/react-redux.min.js" crossorigin></script>
+        <script src="https://unpkg.com/styled-components@4.1.3/dist/styled-components.min.js" crossorigin></script>
+
+        <!-- Load Kepler.gl -->
+        <script src="https://unpkg.com/kepler.gl@3.0.0/umd/keplergl.min.js" crossorigin></script>
+
+        <style type="text/css">
+          body {margin: 0; padding: 0; overflow: hidden;}
+        </style>
+
+        <!--MapBox token-->
+        <script>
+          /**
+           * Provide your MapBox Token
+           **/
+          const MAPBOX_TOKEN = 'pk.eyJ1IjoidWNmLW1hcGJveCIsImEiOiJjbDBiYzlveHgwdnF0M2NtZzUzZWZuNWZ4In0.l9J8ptz3MKwaU9I4PtCcig';
+          const WARNING_MESSAGE = 'Please Provide a Mapbox Token in order to use Kepler.gl. Edit this file and fill out MAPBOX_TOKEN with your access key';
+        </script>
+
+        <!-- GA: Delete this as you wish, However to pat ourselves on the back, we only track anonymous pageview to understand how many people are using kepler.gl. -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+          ga('create', 'UA-64694404-19', {
+            'storage': 'none',
+            'clientId': localStorage.getItem('ga:clientId')
+          });
+          ga(function(tracker) {
+              localStorage.setItem('ga:clientId', tracker.get('clientId'));
+          });
+          ga('set', 'checkProtocolTask', null); // Disable file protocol checking.
+          ga('set', 'checkStorageTask', null); // Disable cookie storage checking.
+          ga('set', 'historyImportTask', null); // Disable history checking (requires reading from cookies).
+          ga('set', 'page', 'keplergl-html');
+          ga('send', 'pageview');
+        </script>
+      </head>
+      <body>
+        <!-- We will put our React component inside this div. -->
+        <div id="app">
+          <!-- Kepler.gl map will be placed here-->
+        </div>
+
+        <!-- Load our React component. -->
+        <script>
+          /* Validate Mapbox Token */
+          if ((MAPBOX_TOKEN || '') === '' || MAPBOX_TOKEN === 'PROVIDE_MAPBOX_TOKEN') {
+            alert(WARNING_MESSAGE);
+          }
+
+          /** STORE **/
+          const reducers = (function createReducers(redux, keplerGl) {
+            return redux.combineReducers({
+              // mount keplerGl reducer
+              keplerGl: keplerGl.keplerGlReducer.initialState({
+                uiState: {
+                  readOnly: true,
+                  currentModal: null
+                }
+              })
+            });
+          }(Redux, KeplerGl));
+
+          const middleWares = (function createMiddlewares(keplerGl) {
+            return keplerGl.enhanceReduxMiddleware([
+              // Add other middlewares here
+            ]);
+          }(KeplerGl));
+
+          const enhancers = (function craeteEnhancers(redux, middles) {
+            return redux.applyMiddleware(...middles);
+          }(Redux, middleWares));
+
+          const store = (function createStore(redux, enhancers) {
+            const initialState = {};
+
+            return redux.createStore(
+              reducers,
+              initialState,
+              redux.compose(enhancers)
+            );
+          }(Redux, enhancers));
+          /** END STORE **/
+
+          /** COMPONENTS **/
+          var KeplerElement = (function makeKeplerElement(react, keplerGl, mapboxToken) {
+            var LogoSvg = function LogoSvg() {
+              return react.createElement(
+                "div",
+                { className: "logo-container", style: {position: 'fixed', zIndex: 10000, padding: '4px'} },
+                  react.createElement(
+                    "svg",
+                    {
+                      className: "kepler_gl__logo",
+                      width: "107px",
+                      height: "21px",
+                      viewBox: "0 0 124 24"
+                    },
+                    react.createElement(
+                      "g",
+                      { transform: "translate(13.500000, 13.500000) rotate(45.000000) translate(-13.500000, -13.500000) translate(4.000000, 4.000000)" },
+                      react.createElement("rect", { x: "0", y: "6", transform: "matrix(2.535181e-06 1 -1 2.535181e-06 18.1107 6.0369)", fill: "#535C6C", width: "12.1", height: "12.1" }),
+                      react.createElement("rect", { x: "6", y: "0", transform: "matrix(2.535182e-06 1 -1 2.535182e-06 18.1107 -6.0369)", fill:"#1FBAD6", width: "12.1", height: "12.1" })
+                    ),
+                    react.createElement(
+                      "g",
+                      {},
+                      react.createElement("path", { fill:"#1FBAD6", d: "M39,8.7h2.2l-2.8,4.2l2.9,5.1H39l-2.4-4.2h-1.3V18h-2V5l2-0.1v7.3h1.3L39,8.7z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M42.4,13.3c0-1.5,0.4-2.7,1.1-3.5s1.8-1.2,3.1-1.2c1.3,0,2.2,0.4,2.8,1.1c0.6,0.7,0.9,1.8,0.9,3.3 c0,0.4,0,0.8,0,1.1h-5.8c0,1.6,0.8,2.4,2.4,2.4c1,0,2-0.2,2.9-0.6l0.2,1.7c-0.4,0.2-0.9,0.4-1.4,0.5s-1.1,0.2-1.7,0.2 c-1.5,0-2.6-0.4-3.3-1.2C42.8,16.1,42.4,14.9,42.4,13.3z M46.6,10.1c-0.7,0-1.2,0.2-1.5,0.5c-0.4,0.4-0.6,0.9-0.6,1.7h4 c0-0.8-0.2-1.4-0.5-1.7S47.2,10.1,46.6,10.1z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M57.1,18.2c-1,0-1.8-0.3-2.3-0.9l0,0l0,1.3v2.5h-2V8.7h1.5l0.3,0.9h0c0.3-0.3,0.7-0.6,1.2-0.7 c0.4-0.2,0.9-0.3,1.4-0.3c1.2,0,2.1,0.4,2.7,1.1c0.6,0.7,0.9,2,0.9,3.7c0,1.6-0.3,2.8-1,3.7C59.2,17.8,58.3,18.2,57.1,18.2z M56.7,10.3c-0.4,0-0.8,0.1-1.1,0.2c-0.3,0.2-0.6,0.4-0.8,0.7v4.3c0.2,0.3,0.4,0.5,0.7,0.7c0.3,0.2,0.7,0.3,1.1,0.3 c0.7,0,1.2-0.2,1.6-0.7c0.4-0.5,0.5-1.3,0.5-2.5c0-0.8-0.1-1.4-0.2-1.8s-0.4-0.7-0.7-0.9C57.6,10.4,57.2,10.3,56.7,10.3z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M63.2,16V5l2-0.1v10.8c0,0.3,0.1,0.5,0.2,0.6c0.1,0.1,0.3,0.2,0.6,0.2c0.3,0,0.6,0,0.9-0.1V18 c-0.4,0.1-1,0.2-1.6,0.2c-0.8,0-1.3-0.2-1.7-0.5S63.2,16.8,63.2,16z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M68.2,13.3c0-1.5,0.4-2.7,1.1-3.5c0.7-0.8,1.8-1.2,3.1-1.2c1.3,0,2.2,0.4,2.8,1.1c0.6,0.7,0.9,1.8,0.9,3.3 c0,0.4,0,0.8,0,1.1h-5.8c0,1.6,0.8,2.4,2.4,2.4c1,0,2-0.2,2.9-0.6l0.2,1.7c-0.4,0.2-0.9,0.4-1.4,0.5s-1.1,0.2-1.7,0.2 c-1.5,0-2.6-0.4-3.3-1.2C68.6,16.1,68.2,14.9,68.2,13.3z M72.4,10.1c-0.7,0-1.2,0.2-1.5,0.5c-0.4,0.4-0.6,0.9-0.6,1.7h4 c0-0.8-0.2-1.4-0.5-1.7S73,10.1,72.4,10.1z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M80.2,8.7l0.1,1.7h0c0.3-0.6,0.7-1.1,1.1-1.4c0.4-0.3,1-0.5,1.6-0.5c0.4,0,0.7,0,1,0.1l-0.1,2 c-0.3-0.1-0.7-0.2-1-0.2c-0.7,0-1.3,0.3-1.7,0.8c-0.4,0.5-0.7,1.2-0.7,2.1V18h-2V8.7H80.2z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M83.8,17c0-0.8,0.4-1.2,1.2-1.2c0.8,0,1.2,0.4,1.2,1.2c0,0.8-0.4,1.1-1.2,1.1C84.2,18.2,83.8,17.8,83.8,17z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M88.5,18.7c0-0.8,0.4-1.4,1.2-1.8c-0.6-0.3-0.9-0.8-0.9-1.5c0-0.7,0.4-1.2,1.1-1.6c-0.3-0.3-0.6-0.6-0.7-0.9 c-0.2-0.4-0.2-0.8-0.2-1.3c0-1,0.3-1.8,0.9-2.3c0.6-0.5,1.6-0.8,2.8-0.8c0.5,0,1,0,1.4,0.1c0.4,0.1,0.8,0.2,1.1,0.4l2.4-0.2v1.5 h-1.5c0.2,0.4,0.2,0.8,0.2,1.3c0,1-0.3,1.7-0.9,2.2s-1.5,0.8-2.7,0.8c-0.7,0-1.2-0.1-1.6-0.2c-0.1,0.1-0.2,0.2-0.3,0.3 c-0.1,0.1-0.1,0.2-0.1,0.4c0,0.2,0.1,0.3,0.2,0.4c0.1,0.1,0.3,0.2,0.6,0.2l2.7,0.2c1,0.1,1.7,0.3,2.2,0.6c0.5,0.3,0.8,0.9,0.8,1.7 c0,0.6-0.2,1.1-0.5,1.5c-0.4,0.4-0.9,0.8-1.5,1c-0.7,0.2-1.5,0.4-2.4,0.4c-1.3,0-2.3-0.2-3-0.6C88.8,20.1,88.5,19.5,88.5,18.7z M95.1,18.4c0-0.3-0.1-0.5-0.3-0.7s-0.6-0.2-1.1-0.3l-2.7-0.3c-0.2,0.1-0.4,0.3-0.5,0.5c-0.1,0.2-0.2,0.4-0.2,0.6 c0,0.4,0.2,0.8,0.5,1c0.4,0.2,1,0.3,1.8,0.3C94.2,19.5,95.1,19.2,95.1,18.4z M94.3,11.5c0-0.6-0.1-1-0.4-1.2 c-0.3-0.2-0.7-0.3-1.3-0.3c-0.7,0-1.1,0.1-1.4,0.3c-0.3,0.2-0.4,0.6-0.4,1.2s0.1,1,0.4,1.2c0.3,0.2,0.7,0.3,1.4,0.3 c0.6,0,1.1-0.1,1.3-0.4S94.3,12,94.3,11.5z" }),
+                      react.createElement("path", { fill:"#1FBAD6", d: "M99.4,16V5l2-0.1v10.8c0,0.3,0.1,0.5,0.2,0.6c0.1,0.1,0.3,0.2,0.6,0.2c0.3,0,0.6,0,0.9-0.1V18 c-0.4,0.1-1,0.2-1.6,0.2c-0.8,0-1.3-0.2-1.7-0.5S99.4,16.8,99.4,16z" })
+                    )
+                  )
+                );
+              };
+
+            return function App() {
+              var rootElm = react.useRef(null);
+              var _useState = react.useState({
+                width: window.innerWidth,
+                height: window.innerHeight
+              });
+              var windowDimension = _useState[0];
+              var setDimension = _useState[1];
+              react.useEffect(function sideEffect(){
+                function handleResize() {
+                  setDimension({width: window.innerWidth, height: window.innerHeight});
+                };
+                window.addEventListener('resize', handleResize);
+                return function() {window.removeEventListener('resize', handleResize);};
+              }, []);
+              return react.createElement(
+                'div',
+                {style: {position: 'absolute', left: 0, width: '100vw', height: '100vh'}},
+                LogoSvg(),
+                react.createElement(keplerGl.KeplerGl, {
+                  mapboxApiAccessToken: mapboxToken,
+                  id: "map",
+                  width: windowDimension.width,
+                  height: windowDimension.height
+                })
+              )
+            }
+          }(React, KeplerGl, MAPBOX_TOKEN));
+
+          const app = (function createReactReduxProvider(react, reactRedux, KeplerElement) {
+            return react.createElement(
+              reactRedux.Provider,
+              {store},
+              react.createElement(KeplerElement, null)
+            )
+          }(React, ReactRedux, KeplerElement));
+          /** END COMPONENTS **/
+
+          /** Render **/
+          (function render(react, reactDOM, app) {
+            reactDOM.render(app, document.getElementById('app'));
+          }(React, ReactDOM, app));
+        </script>
+        <!-- The next script will show how to interact directly with Kepler map store -->
+        <script>
+          /**
+           * Customize map.
+           * In the following section you can use the store object to dispatch Kepler.gl actions
+           * to add new data and customize behavior
+           */
+          (function customize(keplerGl, store) {
+            const datasets = [{"version":"v1","data":{"id":"mtia25","label":"geocounts.csv","color":[143,47,191],"allData":[[0,0,"1 Dollar Scan",20,"0.0002214984%",37.27838889,-121.9492601],[1,1,"Allen County Public Library Geneaology Center",214706,"2.3778514038%",41.0771285,-85.1432003],[2,2,"American Museum of Natural History",29,"0.0003211726%",40.78130431,-73.97404878],[3,4,"American Printing House for the Blind",2326,"0.0257602599%",38.25759766,-85.71422071],[4,5,"Analysis and Policy Observatory (APO)",41,"0.0004540716%",-37.82242623,145.0393157],[5,6,"BYU, Hawaii",884,"0.0097902278%",21.64181757,-157.9265819],[6,7,"BYU, Idaho Family History Library",1655,"0.0183289898%",43.81949648,-111.7827966],[7,8,"BYU, Provo",40698,"0.4507270241%",40.24883196,-111.6492385],[8,9,"BookScanUS",42,"0.0004651466%",32.23962014,-110.9556127],[9,10,"Boston Public Library",256899,"2.8451354307%",42.34936189,-71.07819992],[10,11,"British Library",230566,"2.5534996077%",51.53000987,-0.1275571138],[11,12,"Brown University",19711,"0.2182977142%",41.82567677,-71.40513051],[12,14,"California State Library",1893,"0.0209648203%",38.57589327,-121.4962643],[13,15,"Centre for Strategic and International Studies, Jakarta",492,"0.0054488598%",-6.177154589,106.8164464],[14,16,"Church History Library",15954,"0.1766892462%",40.77200728,-111.8906814],[15,17,"Clatsop County Historical Society",2171,"0.0240436476%",46.1884006,-123.8253618],[16,18,"Clemson University",10410,"0.1152898993%",34.67661443,-82.8364096],[17,19,"Columbia University",62910,"0.6967231089%",40.80657713,-73.96320572],[18,20,"Datum Data Co. Ltd.",482936,"5.3484767336%",22.50635114,114.0501618],[19,21,"Duke University",21850,"0.2419869644%",36.00294192,-78.93834083],[20,22,"Family Search Library",803,"0.0088931594%",40.77037084,-111.8945972],[21,23,"Georgetown University",218,"0.0024143322%",38.90659981,-77.07223903],[22,24,"Getty Research Institute",195,"0.0021596091%",34.0769306,-118.4754969],[23,25,"Getty Research Institute Valencia Warehouse",24347,"0.2696410353%",34.0769306,-118.4754969],[24,26,"Hamilton Public Library",201,"0.0022260586%",43.25893488,-79.87052526],[25,27,"Harvard",944,"0.0104547229%",42.37357506,-71.11649816],[26,29,"Hopewell Junction",24,"0.0002657980%",41.58494026,-73.8016634],[27,30,"Innodata Knowledge Services, Inc.",5440127,"60.2489619479%",10.31810777,123.9197947],[28,31,"International Institute of Information Technology Hyderabad",8322,"0.0921654699%",17.44586255,78.34932817],[29,32,"Internet Archive Headquarters",67735,"0.7501595896%",37.78244229,-122.4717902],[30,32,"Internet Archive Headquarters",67735,"0.7501595896%",37.80039616,-122.4603638],[31,33,"Internet Archive Sheridan Headquarters",2423,"0.0268345270%",39.3290796,-122.4603688],[32,33,"Internet Archive Sheridan Headquarters",2423,"0.0268345270%",39.32729316,-122.4603688],[33,34,"Internt Archive Physical Archive",116251,"1.2874703248%",37.92940204,-122.3459016],[34,35,"John Hopkins University Library Offsite Storage",4963,"0.0549648194%",39.20608234,-76.94551344],[35,36,"Library of Congress",212004,"2.3479269746%",38.88870235,-77.00481291],[36,37,"Missouri Botanical Garden",1,"0.0000110749%",38.61688951,-90.26274302],[37,38,"National Agricultural Library",217119,"2.4045751816%",39.022774,-76.9217401],[38,38,"National Agricultural Library",217119,"2.4045751816%",55.94870434,-3.191972202],[39,40,"Natural History Museum Library, London",10759,"0.1191550458%",51.49684189,-0.176270642],[40,41,"New York Botanical Garden",38,"0.0004208469%",40.86660468,-73.87875668],[41,42,"North Carolina State University",3198,"0.0354175887%",35.78748428,-78.66939426],[42,43,"Oberlin College Libraries",1755,"0.0194364816%",41.29341848,-82.22281366],[43,44,"Osmania University",2522,"0.0279309439%",17.41717781,78.52560833],[44,45,"Peabody Essex Museum",7,"0.0000775244%",42.52157514,-70.89222149],[45,46,"Perkins School for the Blind",81,"0.0008970684%",42.3616051,-71.17784952],[46,47,"Perpustakaan Provinsi Bali",560,"0.0062019542%",-8.685606156,115.2297763],[47,48,"Press Academy of Andhra Pradesh",4150,"0.0459609109%",17.39517291,78.47138682],[48,49,"Princeton University",192458,"2.1314566220%",40.34956609,-74.65738623],[49,50,"Regional Mega Scanning Center by IIT, Hyderbad",12555,"0.1390455990%",17.4462589,78.3484708],[50,51,"Research Institute of Korean Studies",7,"0.0000775244%",37.5928363,127.0264268],[51,52,"San Francisco Public Library",11286,"0.1249915277%",37.77914204,-122.4157906],[52,54,"Smithsonian Libraries and Archives",16664,"0.1845524382%",38.89132735,-77.02586404],[53,54,"Smithsonian Libraries and Archives",16664,"0.1845524382%",38.89126054,-77.02586404],[54,55,"Stanford University",39,"0.0004319218%",37.4239279,-122.1674727],[55,56,"State Library of Pennsylvania",22248,"0.2463947819%",40.2650287,-76.88065236],[56,57,"Staten Island Museum",146,"0.0016169381%",40.64455096,-74.10269554],[57,58,"The Archive of Contemporary Music",3020,"0.0334462532%",40.71867548,-74.00374316],[58,59,"The Ohio State University",924,"0.0102332245%",39.99926893,-83.01493372],[59,60,"The Servants of Knowledge",14841,"0.1643628622%",12.966384,77.6352956],[60,61,"Trent University",2,"0.0000221498%",44.35722473,-78.29034148],[61,62,"UCLA",157748,"1.7470462085%",34.07168305,-118.442185],[62,63,"UIUC",104372,"1.1559113705%",40.10440926,-88.22933583],[63,64,"UNC Chapel Hill",59079,"0.6542950970%",35.91097779,-79.0487334],[64,65,"Universidad Francisco Marroquín",4151,"0.0459719858%",14.6054948,-90.50534962],[65,66,"University of Alberta",121340,"1.3438305839%",53.5264397,-113.5254331],[66,67,"University of Chinese Academy of Sciences",1277,"0.0141426706%",40.40814427,116.6823424],[67,68,"University of Connecticut",262,"0.0029016286%",41.80696142,-72.25146626],[68,69,"University of Florida",8289,"0.0917999976%",29.6516662,-82.3445709],[69,70,"University of Maryland, College Park",2452,"0.0271556996%",38.9860937,-76.9456868],[70,71,"University of Pretoria",2435,"0.0269674260%",-25.7553205,28.2295439],[71,72,"University of Toronto",465884,"5.1596272271%",43.66441368,-79.39947221],[72,73,"University of Victoria",6843,"0.0757856658%",48.4633746,-123.3100252],[73,74,"University of Warwick",715,"0.0079185666%",52.38161719,-1.561841996],[74,75,"Washington University in St. Louis",18103,"0.2004892456%",38.649678,-90.32848246],[75,76,"Yiddish Book Center",1242,"0.0137550485%",42.32188825,-72.52766762],[76,77,"Zhejiang University",1,"0.0000110749%",30.2628344,120.1190128]],"fields":[{"name":"0","type":"integer","format":"","analyzerType":"INT"},{"name":"Unnamed: 0","type":"integer","format":"","analyzerType":"INT"},{"name":"name","type":"string","format":"","analyzerType":"STRING"},{"name":"total_scans","type":"integer","format":"","analyzerType":"INT"},{"name":"percent_of_total","type":"string","format":"","analyzerType":"STRING"},{"name":"lat","type":"real","format":"","analyzerType":"FLOAT"},{"name":"long","type":"real","format":"","analyzerType":"FLOAT"}]}}];
+            const config = {"version":"v1","config":{"visState":{"filters":[],"layers":[{"id":"vgd7c04","type":"point","config":{"dataId":"mtia25","label":"point","color":[255,203,153],"highlightColor":[252,242,26,255],"columns":{"lat":"lat","lng":"long"},"isVisible":true,"visConfig":{"radius":10,"fixedRadius":false,"opacity":0.8,"outline":true,"thickness":2,"strokeColor":[25,20,16],"colorRange":{"name":"Global Warming","type":"sequential","category":"Uber","colors":["#5A1846","#900C3F","#C70039","#E3611C","#F1920E","#FFC300"]},"strokeColorRange":{"name":"Global Warming","type":"sequential","category":"Uber","colors":["#5A1846","#900C3F","#C70039","#E3611C","#F1920E","#FFC300"]},"radiusRange":[33.6,250],"filled":true},"hidden":false,"textLabel":[{"field":null,"color":[255,255,255],"size":18,"offset":[0,0],"anchor":"start","alignment":"center","outlineWidth":0,"outlineColor":[255,0,0,255],"background":false,"backgroundColor":[0,0,200,255]}]},"visualChannels":{"colorField":{"name":"total_scans","type":"integer"},"colorScale":"quantile","strokeColorField":null,"strokeColorScale":"quantile","sizeField":{"name":"total_scans","type":"integer"},"sizeScale":"sqrt"}}],"effects":[],"interactionConfig":{"tooltip":{"fieldsToShow":{"mtia25":[{"name":"0","format":null},{"name":"Unnamed: 0","format":null},{"name":"name","format":null},{"name":"total_scans","format":null},{"name":"percent_of_total","format":null}]},"compareMode":false,"compareType":"absolute","enabled":true},"brush":{"size":0.5,"enabled":false},"geocoder":{"enabled":false},"coordinate":{"enabled":false}},"layerBlending":"normal","overlayBlending":"normal","splitMaps":[],"animationConfig":{"currentTime":null,"speed":1},"editor":{"features":[],"visible":true}},"mapState":{"bearing":0,"dragRotate":false,"latitude":30.87614986417503,"longitude":14.401066492322142,"pitch":0,"zoom":1.356241986592207,"isSplit":false,"isViewportSynced":true,"isZoomLocked":false,"splitMapViewports":[]},"mapStyle":{"styleType":"positron-nolabels","topLayerGroups":{},"visibleLayerGroups":{"label":true,"road":true,"border":false,"building":true,"water":true,"land":true,"3d building":false},"threeDBuildingColor":[232.7874787737094,232.7874787737094,230.92517894351974],"backgroundColor":[0,0,0],"mapStyles":{}}}};
+
+            const loadedData = keplerGl.KeplerGlSchema.load(
+              datasets,
+              config
+            );
+
+            store.dispatch(keplerGl.addDataToMap({
+              datasets: loadedData.datasets,
+              config: loadedData.config,
+              options: {
+                centerMap: false
+              }
+            }));
+          }(KeplerGl, store))
+        </script>
+      </body>
+    </html>
+  
